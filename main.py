@@ -114,6 +114,8 @@ def historical_data(symbol,folder = 'data'):
     else:
         print("historical_data() -> No data found in the JSON.")
 
+    return True
+
 def main():
     check_for_symbols()
     with open('symbols/symbols.csv', 'r') as f:
@@ -123,10 +125,10 @@ def main():
                 continue
             print("main() -> Getting historical data for: ", symbol)
             result = historical_data(symbol)
-            if not result:
+            while not result:
+                time.sleep(2)
                 print("main() -> Trying again for: ", symbol)
-                time.sleep(1)
-                historical_data(symbol)
+                result = historical_data(symbol)
             
 
 
@@ -185,7 +187,8 @@ def clean_dir( paths = ['data','response','index','symbols']):
         if os.path.exists(path):
             shutil.rmtree(path)
 
-def init_dir(): 
+def init_dir():
+    print("init_dir() -> Initializing directories data, backup, response, symbols, index, backups_month") 
     os.mkdir('data') if not os.path.exists('data') else None
     os.mkdir('backup') if not os.path.exists('backup') else None
     os.makedirs('response') if not os.path.exists('response') else None
@@ -215,10 +218,14 @@ def monthy_backup():
                 break
 
 
-
+result = False
 time1 = time.time()
 init_dir()
-historical_data("NEPSE","index")
+while not result:
+    time.sleep(2)
+    print(" Trying again for: NEPSE")
+    result = historical_data("NEPSE","index")
+
 unzip()
 fetch()
 backup_data_folder()
