@@ -21,10 +21,15 @@ jobs:
       with:
         python-version: 3.9
 
+    # Install Chrome and ChromeDriver
+    - name: Install Chrome and ChromeDriver
+      uses: nanasess/setup-chromedriver@v2
+
+
     # Install dependencies
     - name: Install dependencies
       run: |
-        pip install requests  pandas selenium webdriver-manager 
+        pip install requests pandas selenium webdriver-manager
 
     # Run the Python script
     - name: Run Python Script
