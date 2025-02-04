@@ -92,7 +92,7 @@ def historical_data(symbol,folder = 'data'):
         print(page_source[0:100])
         print("historical_data() -> No JSON data found in the page source.")
         driver.quit()
-        return
+        return False
     
     driver.quit()
 
@@ -122,7 +122,13 @@ def main():
             if symbol == 'Symbol':
                 continue
             print("main() -> Getting historical data for: ", symbol)
-            historical_data(symbol)
+            result = historical_data(symbol)
+            if not result:
+                print("main() -> Trying again for: ", symbol)
+                time.sleep(1)
+                historical_data(symbol)
+            
+
 
 def fetch():
     dfn = pd.read_csv("index/NEPSE.csv")
