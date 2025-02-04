@@ -127,9 +127,9 @@ def main():
                 continue
             print("main() -> Getting historical data for: ", symbol)
             result = historical_data(symbol)
-            while not result:
+            if not result:
                 time.sleep(2)
-                print("main() -> Trying again for: ", symbol)
+                print(f" Trying again for: {symbol}")
                 result = historical_data(symbol)
             
 
@@ -190,7 +190,7 @@ def clean_dir( paths = ['data','response','index','symbols']):
             shutil.rmtree(path)
 
 def init_dir():
-    print("init_dir() -> Initializing directories data, backup, response, symbols, index, backups_month") 
+    print("init_dir() -> Initializing directories data, backup, response, symbols, index, backups_month and screenshots") 
     os.mkdir('data') if not os.path.exists('data') else None
     os.mkdir('backup') if not os.path.exists('backup') else None
     os.makedirs('response') if not os.path.exists('response') else None
@@ -221,18 +221,17 @@ def monthy_backup():
                 break
 
 
-result = False
-time1 = time.time()
+
 init_dir()
-while not result:
+result = historical_data("NEPSE","index")
+if not result:
     time.sleep(2)
     print(" Trying again for: NEPSE")
     result = historical_data("NEPSE","index")
+    
 
 unzip()
 fetch()
 backup_data_folder()
 monthy_backup()
 clean_dir()
-time2 = time.time()
-print("\nTime taken: ", time2-time1)
