@@ -89,6 +89,8 @@ def historical_data(symbol,folder = 'data'):
         with open(f"response/{symbol}.json", "w", encoding="utf-8") as file:
             file.write(json_data)
     else:
+        #save screenshot of the page
+        driver.save_screenshot(f"screenshots/{symbol}.png")
         print(page_source[0:100])
         print("historical_data() -> No JSON data found in the page source.")
         driver.quit()
@@ -195,6 +197,7 @@ def init_dir():
     os.makedirs('symbols') if not os.path.exists('symbols') else None
     os.makedirs('index') if not os.path.exists('index') else None
     os.makedirs('backups_month') if not os.path.exists('backups_month') else None
+    os.makedirs('screenshots') if not os.path.exists('screenshots') else None
 
 def monthy_backup(): 
     files = os.listdir('backup')
