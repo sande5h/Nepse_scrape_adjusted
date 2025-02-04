@@ -150,7 +150,7 @@ def backup_data_folder(folder='data'):
         return None
 
     dfn = pd.read_csv("index/NEPSE.csv")
-    backup_filename = f'backup_{dfn['timestamp'].iloc[-1]}'
+    backup_filename = f"backup_{dfn['timestamp'].iloc[-1]}"
 
     # print(backup_filename)
     backup_path = os.path.join('backup', backup_filename)
@@ -160,7 +160,7 @@ def backup_data_folder(folder='data'):
 
 def unzip():
     dfn = pd.read_csv("index/NEPSE.csv")
-    backup_filename = f'backup_{dfn['timestamp'].iloc[-1]}.zip'
+    backup_filename = f"backup_{dfn['timestamp'].iloc[-1]}.zip"
     backup_path = os.path.join('backup', backup_filename)
     extract_dir = 'data'
 
