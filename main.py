@@ -90,6 +90,8 @@ def historical_data(symbol,folder = 'data'):
             file.write(json_data)
     else:
         print("historical_data() -> No JSON data found in the page source.")
+        driver.quit()
+        return
     
     driver.quit()
 
