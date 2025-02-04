@@ -13,7 +13,7 @@ from datetime import datetime
 import shutil
 
 #get random string of 5 characters
-random_word = ''.join(random.choices('abcdefghijklmnopqrstuvwxyz', k=5))
+
 # print(random_word)
 options = webdriver.ChromeOptions()
 options.add_argument("--headless=new")
@@ -78,7 +78,7 @@ def check_for_symbols():
     print('check_for_symbols() -> Symbols saved to symbols/symbols.csv')
 
 def historical_data(symbol,folder = 'data'):
-
+    random_word = ''.join(random.choices('abcdefghijklmnopqrstuvwxyz', k=5))
     driver = webdriver.Chrome(options=options)
     driver.get(f"https://nepsealpha.com/trading/1/history?fsk={random_word}&symbol={symbol}&resolution=1D&pass=ok")
     time.sleep(2)
@@ -89,6 +89,7 @@ def historical_data(symbol,folder = 'data'):
         with open(f"response/{symbol}.json", "w", encoding="utf-8") as file:
             file.write(json_data)
     else:
+        print(page_source[0:100])
         print("historical_data() -> No JSON data found in the page source.")
         driver.quit()
         return
