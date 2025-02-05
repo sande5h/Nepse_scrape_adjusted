@@ -40,7 +40,7 @@ def check_for_symbols():
 
         driver.get("https://nepsealpha.com/traded-stocks")
         time.sleep(2)
-
+        driver.save_screenshot(f"screenshots/NEPSE.png")
         select_element = driver.find_element(By.NAME, 'DataTables_Table_0_length')
         select = Select(select_element)
         select.select_by_value('100')
