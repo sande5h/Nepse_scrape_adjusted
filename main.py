@@ -184,7 +184,7 @@ def unzip():
     
     shutil.unpack_archive(backup_path, extract_dir)
 
-def clean_dir( paths = ['data','response','index','symbols']):
+def clean_dir( paths = ['response','index','symbols']):
     for path in paths:
         if os.path.exists(path):
             shutil.rmtree(path)
