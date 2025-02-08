@@ -12,9 +12,8 @@ import random
 from datetime import datetime
 import shutil
 
-#get random string of 5 characters
 
-# print(random_word)
+
 options = webdriver.ChromeOptions()
 options.add_argument("--headless=new")
 options.add_argument("--disable-blink-features=AutomationControlled")
