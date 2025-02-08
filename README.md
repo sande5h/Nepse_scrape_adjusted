@@ -49,45 +49,45 @@ The script will automatically create necessary directories (data, backup, respon
 
 The script will:
 
-    - Scrape the list of traded stocks and save it to symbols/symbols.csv.
+- Scrape the list of traded stocks and save it to symbols/symbols.csv.
 
-    - Download historical data for each stock symbol and save it in the data directory.
+- Download historical data for each stock symbol and save it in the data directory.
 
-    - Backup the downloaded data to the backup directory.
+- Backup the downloaded data to the backup directory.
 
-    - Perform monthly backups by moving the first backup of each month to the backups_month directory.
+- Perform monthly backups by moving the first backup of each month to the backups_month directory.
 
-    - Clean up old data from specified directories.
+- Clean up old data from specified directories.
 
 ## Functions Overview
 
-1. ***check_for_symbols()***: Fetches the list of traded stocks from NepseAlpha and saves it to symbols/symbols.csv.
+- ***check_for_symbols()***: Fetches the list of traded stocks from NepseAlpha and saves it to symbols/symbols.csv.
 
-2. ***historical_data(symbol, folder)***: Downloads historical data for a given stock symbol and saves it in the specified folder.
+- ***historical_data(symbol, folder)***: Downloads historical data for a given stock symbol and saves it in the specified folder.
 
-3. ***main()***: Orchestrates the scraping process by calling check_for_symbols() and historical_data() for each symbol.
+- ***main()***: Orchestrates the scraping process by calling check_for_symbols() and historical_data() for each symbol.
 
-4. ***fetch()***: Checks for new data and runs the main scraping function if new data is found.
+- ***fetch()***: Checks for new data and runs the main scraping function if new data is found.
 
-5. ***backup_data_folder(folder)***: Creates a zip backup of the data folder.
+- ***backup_data_folder(folder)***: Creates a zip backup of the data folder.
 
-6. ***unzip()***: Unzips the latest backup file.
+- ***unzip()***: Unzips the latest backup file.
 
-7. ***clean_dir(paths)***: Cleans up specified directories by removing their contents.
+- ***clean_dir(paths)***: Cleans up specified directories by removing their contents.
 
-8. ***init_dir()***: Initializes necessary directories.
+- ***init_dir()***: Initializes necessary directories.
 
-9. ***monthy_backup()***: Moves the first backup of each month to the backups_month directory.
+- ***monthy_backup()***: Moves the first backup of each month to the backups_month directory.
 
 
 
 ## Notes
 
-    - Ensure you have a stable internet connection while running the script.
+- Ensure you have a stable internet connection while running the script.
 
-    - The script may take some time to complete, depending on the number of symbols and the amount of data being scraped.
+- The script may take some time to complete, depending on the number of symbols and the amount of data being scraped.
 
-    - Regularly check the screenshots directory for any errors captured during the scraping process.
+- Regularly check the screenshots directory for any errors captured during the scraping process.
 
 
 
@@ -97,11 +97,13 @@ The script will:
 
 This script is provided for educational and personal use only. The author is not responsible for any misuse of this script, including but not limited to:
 
-    - Use for commercial purposes.
+- Use for commercial purposes.
 
-    - Violation of the terms of service of NepseAlpha or any other website.
+- Violation of the terms of service of NepseAlpha or any other website.
 
-    -Any legal or financial consequences arising from the use of this script.
+-Any legal or financial consequences arising from the use of this script.
+
+
 
 By using this script, you agree to use it at your own risk. The author is not liable for any damages or losses incurred as a result of using this script.
 
