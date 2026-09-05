@@ -234,5 +234,17 @@ unzip()
 fetch()
 backup_data_folder()
 monthy_backup()
+
+# fetch() only reaches main() -- and so check_for_symbols() -- when there is new
+# price data. On a closed-market day symbols.csv is never written, which would
+# leave the app feed with no company names and no market caps, so make sure the
+# file exists before building. Failing to scrape it is not fatal: build_app_json
+# falls back to the names already in the previous current.json.
+if not os.path.exists('symbols/symbols.csv'):
+    try:
+        check_for_symbols()
+    except Exception as error:
+        print(f"check_for_symbols() -> failed, reusing previous metadata: {error}")
+
 build_app_json.build()   # must run before clean_dir() -- it reads symbols/symbols.csv
 clean_dir()
