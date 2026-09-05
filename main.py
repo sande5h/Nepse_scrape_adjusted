@@ -11,6 +11,7 @@ import os
 import random
 from datetime import datetime
 import shutil
+import build_app_json
 
 
 
@@ -233,4 +234,5 @@ unzip()
 fetch()
 backup_data_folder()
 monthy_backup()
+build_app_json.build()   # must run before clean_dir() -- it reads symbols/symbols.csv
 clean_dir()
